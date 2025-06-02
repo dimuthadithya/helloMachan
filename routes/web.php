@@ -19,6 +19,9 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
+// Include authentication routes
+require __DIR__.'/auth.php';
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
