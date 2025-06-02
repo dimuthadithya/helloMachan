@@ -1,6 +1,6 @@
 <!-- Navbar & Hero Start -->
-<div class="p-0 position-relative">
-    <nav class="px-4 py-3 navbar navbar-expand-lg navbar-dark bg-dark px-lg-5 py-lg-0">
+<div class="container-fluid p-0">
+    <nav class="px-4 py-3 navbar navbar-expand-lg navbar-dark bg-dark position-relative px-lg-5 py-lg-0" style="background-color: var(--dark) !important; z-index: 1000;">
         <a href="{{ route('home') }}" class="p-0 navbar-brand">
             <h1 class="m-0 text-primary">
                 <i class="fa fa-utensils me-3"></i>Hello Machan
