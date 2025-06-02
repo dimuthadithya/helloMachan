@@ -15,14 +15,21 @@
                 <a href="{{ route('about') }}" class="nav-item nav-link {{ request()->routeIs('about') ? 'active' : '' }}">About</a>
                 <a href="{{ route('menu') }}" class="nav-item nav-link {{ request()->routeIs('menu') ? 'active' : '' }}">Menu</a>
                 <a href="{{ route('contact') }}" class="nav-item nav-link {{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a>
-            </div>
-            @guest
+            </div> @guest
             <div class="d-flex gap-2">
                 <a href="{{ route('login') }}" class="px-3 py-2 btn btn-outline-light">Login</a>
                 <a href="{{ route('register') }}" class="px-3 py-2 btn btn-primary">Register</a>
             </div>
             @else
-            <a href="#booking" class="px-4 py-2 btn btn-primary">Book A Table</a>
+            <div class="d-flex gap-2 align-items-center">
+                <a href="#booking" class="px-4 py-2 btn btn-primary">Book A Table</a>
+                <form method="POST" action="{{ route('logout') }}" class="m-0">
+                    @csrf
+                    <button type="submit" class="px-3 py-2 btn btn-outline-light">
+                        <i class="bi bi-box-arrow-right me-2"></i>Logout
+                    </button>
+                </form>
+            </div>
             @endguest
         </div>
     </nav>
