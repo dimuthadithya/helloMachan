@@ -20,7 +20,7 @@ Route::get('/contact', function () {
 })->name('contact');
 
 // Include authentication routes
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::get('/dashboard', function () {
     return view('dashboard');
