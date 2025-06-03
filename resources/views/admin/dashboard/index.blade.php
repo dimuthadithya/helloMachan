@@ -146,7 +146,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>${{ number_format($order->total, 2) }}</td>
+                                <td>${{ number_format($order->total_amount, 2) }}</td>
                                 <td>
                                     <span class="badge bg-{{ $order->status === 'completed' ? 'success' : ($order->status === 'pending' ? 'warning' : 'info') }}">
                                         {{ ucfirst($order->status) }}

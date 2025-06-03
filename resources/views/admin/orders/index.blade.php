@@ -124,7 +124,7 @@
                                 </td>
                                 <td>{{ $order->items->count() }} items</td>
                                 <td>
-                                    <h6 class="mb-0">${{ number_format($order->total, 2) }}</h6>
+                                    <h6 class="mb-0">${{ number_format($order->total_amount, 2) }}</h6>
                                 </td>
                                 <td>
                                     <span class="badge bg-{{ 
