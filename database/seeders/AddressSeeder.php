@@ -57,7 +57,7 @@ class AddressSeeder extends Seeder
             // Randomly select 1-3 addresses for this customer
             $numAddresses = rand(1, 3);
             $customerAddresses = collect($addresses)->random($numAddresses);
-            
+
             foreach ($customerAddresses as $index => $addressData) {
                 // Create the address
                 Address::create([
