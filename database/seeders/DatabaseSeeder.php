@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CategorySeeder::class,
             MenuItemSeeder::class,
+            AddressSeeder::class, // Add addresses before orders
             OrderSeeder::class,
             OrderItemSeeder::class,
             CartItemSeeder::class,

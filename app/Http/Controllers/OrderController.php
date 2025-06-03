@@ -17,13 +17,15 @@ class OrderController extends Controller
 
         return view('orders.index', compact('orders'));
     }
-
     public function show(Order $order)
     {
         // Check if the order belongs to the authenticated user
         if ($order->user_id !== Auth::user()->id) {
             abort(403, 'Unauthorized action.');
         }
+
+        // Load the order with all necessary relationships
+        $order->load(['items.menuItem', 'user']);
 
         return view('orders.show', compact('order'));
     }

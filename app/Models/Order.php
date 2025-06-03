@@ -20,7 +20,11 @@ class Order extends Model
         'delivery_address',
         'contact_number',
         'special_instructions',
-        'completed_at'
+        'completed_at',
+        'customer_name',
+        'customer_email',
+        'customer_phone',
+        'order_number'
     ];
 
     protected $casts = [
