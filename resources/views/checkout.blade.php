@@ -42,9 +42,7 @@
         <!-- Checkout Form -->
         <div class="col-lg-8 order-lg-1">
             <div class="p-4 bg-white rounded shadow-sm">
-                <h4 class="mb-4">Delivery Information</h4>
-
-                <form action="{{ route('checkout.store') }}" method="POST">
+                <h4 class="mb-4">Delivery Information</h4>                <form action="{{ route('checkout.store') }}" method="POST">
                     @csrf
 
                     @if($addresses->isNotEmpty())
@@ -128,7 +126,6 @@
                                 @enderror
                             </div>
                         </div>
-
                         <div class="col-12">
                             <div class="form-floating">
                                 <textarea class="form-control @error('notes') is-invalid @enderror"
@@ -141,9 +138,98 @@
                             </div>
                         </div>
 
-                        <div class="col-12">
+                        <div class="pt-4 mb-4 border-top"></div>
+
+                        <!-- Payment Information -->
+                        <h5 class="mb-4">Payment Information</h5>
+                        @if($errors->any())
+                        <div class="alert alert-danger">
+                            <ul class="mb-0">
+                                @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control @error('card_holder_name') is-invalid @enderror"
+                                        id="card_holder_name" name="card_holder_name" placeholder="Card Holder Name"
+                                        value="{{ old('card_holder_name') }}" required>
+                                    <label for="card_holder_name">Card Holder Name</label>
+                                    @error('card_holder_name')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control @error('card_number') is-invalid @enderror"
+                                        id="card_number" name="card_number" placeholder="Card Number"
+                                        value="{{ old('card_number') }}" required maxlength="19">
+                                    <label for="card_number">Card Number</label>
+                                    @error('card_number')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-floating">
+                                    <select class="form-select @error('expiration_month') is-invalid @enderror"
+                                        id="expiration_month" name="expiration_month" required>
+                                        <option value="">Month</option>
+                                        @for($i = 1; $i <= 12; $i++)
+                                            <option value="{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}"
+                                            {{ old('expiration_month') == str_pad($i, 2, '0', STR_PAD_LEFT) ? 'selected' : '' }}>
+                                            {{ str_pad($i, 2, '0', STR_PAD_LEFT) }}
+                                            </option>
+                                            @endfor
+                                    </select>
+                                    <label for="expiration_month">Month</label>
+                                    @error('expiration_month')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-floating">
+                                    <select class="form-select @error('expiration_year') is-invalid @enderror"
+                                        id="expiration_year" name="expiration_year" required>
+                                        <option value="">Year</option>
+                                        @for($i = date('Y'); $i <= date('Y') + 10; $i++)
+                                            <option value="{{ $i }}" {{ old('expiration_year') == $i ? 'selected' : '' }}>
+                                            {{ $i }}
+                                            </option>
+                                            @endfor
+                                    </select>
+                                    <label for="expiration_year">Year</label>
+                                    @error('expiration_year')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-floating">
+                                    <input type="password" class="form-control @error('cvv') is-invalid @enderror"
+                                        id="cvv" name="cvv" placeholder="CVV" required
+                                        maxlength="4" minlength="3">
+                                    <label for="cvv">CVV</label>
+                                    @error('cvv')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 col-12">
                             <button type="submit" class="py-3 btn btn-primary w-100">
-                                <i class="bi bi-bag-check me-2"></i>Place Order
+                                <i class="bi bi-bag-check me-2"></i>Place Order and Pay
                             </button>
                         </div>
                     </div>
@@ -161,6 +247,13 @@
         const addressInputs = document.querySelectorAll('.address-select');
         const newAddressForm = document.getElementById('new-address-form');
         const addressFields = newAddressForm.querySelectorAll('input[required], textarea[required]');
+
+        // Card number formatting        const cardInput = document.getElementById('card_number');
+        cardInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            value = value.replace(/(.{4})/g, '$1 ').trim();
+            e.target.value = value;
+        });
 
         function toggleNewAddressForm() {
             const useNewAddress = document.getElementById('address_new').checked;
