@@ -14,13 +14,19 @@ class FeedbackController extends Controller
             ->latest()
             ->paginate(10);
 
-        return view('admin.feedbacks.index', compact('feedbacks'));
+        return view('admin.feedback.index', compact('feedbacks'));
     }
 
-    public function toggleApproval(Feedback $feedback)
+    public function approve(Feedback $feedback)
     {
-        $feedback->update(['is_approved' => !$feedback->is_approved]);
-        return back()->with('success', 'Feedback status updated successfully');
+        $feedback->update(['is_approved' => true]);
+        return back()->with('success', 'Feedback approved successfully');
+    }
+
+    public function reject(Feedback $feedback)
+    {
+        $feedback->update(['is_approved' => false]);
+        return back()->with('success', 'Feedback rejected successfully');
     }
 
     public function toggleFeatured(Feedback $feedback)

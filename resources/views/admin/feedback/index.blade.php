@@ -93,25 +93,34 @@
                                 </td>
                                 <td>{{ $feedback->created_at->format('M d, Y') }}</td>
                                 <td>
-                                    <div class="d-flex gap-2">
+                                    <div class="gap-2 d-flex">
                                         @if(!$feedback->is_approved)
                                         <form action="{{ route('admin.feedback.approve', $feedback) }}" method="POST" class="d-inline">
                                             @csrf
-                                            <button type="submit" class="btn btn-sm btn-success">
+                                            <button type="submit" class="btn btn-sm btn-success" title="Approve Feedback">
                                                 <i class="bi bi-check-lg"></i>
                                             </button>
                                         </form>
+                                        @else
                                         <form action="{{ route('admin.feedback.reject', $feedback) }}" method="POST" class="d-inline">
                                             @csrf
-                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to reject this feedback?')">
+                                            <button type="submit" class="btn btn-sm btn-warning" onclick="return confirm('Are you sure you want to reject this feedback?')">
                                                 <i class="bi bi-x-lg"></i>
                                             </button>
                                         </form>
                                         @endif
+
                                         <form action="{{ route('admin.feedback.toggle-featured', $feedback) }}" method="POST" class="d-inline">
                                             @csrf
-                                            <button type="submit" class="btn btn-sm {{ $feedback->is_featured ? 'btn-secondary' : 'btn-info' }}">
-                                                <i class="bi bi-star{{ $feedback->is_featured ? '' : '-fill' }}"></i>
+                                            <button type="submit" class="btn btn-sm {{ $feedback->is_featured ? 'btn-secondary' : 'btn-info' }}" title="{{ $feedback->is_featured ? 'Remove from featured' : 'Add to featured' }}">
+                                                <i class="bi bi-star{{ $feedback->is_featured ? '-fill' : '' }}"></i>
+                                            </button>
+                                        </form>
+                                        <form action="{{ route('admin.feedback.destroy', $feedback) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this feedback?')" title="Delete Feedback">
+                                                <i class="bi bi-trash"></i>
                                             </button>
                                         </form>
                                     </div>

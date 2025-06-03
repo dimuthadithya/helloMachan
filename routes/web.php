@@ -90,5 +90,6 @@ Route::middleware('auth')->group(function () {
         Route::post('/feedback/{feedback}/approve', [App\Http\Controllers\Admin\FeedbackController::class, 'approve'])->name('feedback.approve');
         Route::post('/feedback/{feedback}/reject', [App\Http\Controllers\Admin\FeedbackController::class, 'reject'])->name('feedback.reject');
         Route::post('/feedback/{feedback}/toggle-featured', [App\Http\Controllers\Admin\FeedbackController::class, 'toggleFeatured'])->name('feedback.toggle-featured');
+        Route::delete('/feedback/{feedback}', [App\Http\Controllers\Admin\FeedbackController::class, 'destroy'])->name('feedback.destroy');
     });
 });
