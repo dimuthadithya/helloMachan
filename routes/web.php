@@ -38,6 +38,11 @@ Route::middleware('auth')->group(function () {
         // Dashboard
         Route::get('/dashboard', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('dashboard');
 
+        // Profile Management
+        Route::get('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'edit'])->name('profile.edit');
+        Route::put('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'update'])->name('profile.update');
+        Route::put('/profile/password', [App\Http\Controllers\Admin\ProfileController::class, 'updatePassword'])->name('profile.password');
+
         // Menu Items Management
         Route::resource('items', App\Http\Controllers\Admin\MenuItemController::class);
 
