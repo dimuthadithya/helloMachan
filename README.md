@@ -7,55 +7,105 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# HelloMachan - Food Ordering Web Application
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+HelloMachan is a Laravel-based food ordering platform that allows users to browse menu items, add them to a cart, checkout with delivery and payment information, and track their orders. The application features user authentication, address management, order feedback, and an admin dashboard for managing menu items, categories, orders, users, and feedback.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+-   User registration, login, and profile management
+-   Browse menu items by category
+-   Add items to cart and manage cart contents
+-   Checkout with saved or new address
+-   Payment information collection and storage
+-   Order history and order details view
+-   Leave feedback on completed orders
+-   Admin dashboard for managing menu, orders, users, and feedback
 
-## Learning Laravel
+## Screenshots
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Home Page
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+![Home Page](resources/screenshots/home.png)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Menu Page
 
-## Laravel Sponsors
+![Menu Page](resources/screenshots/menu.png)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Cart Page
 
-### Premium Partners
+![Cart Page](resources/screenshots/cart.png)
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### Checkout Page
 
-## Contributing
+![Checkout Page](resources/screenshots/checkout.png)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Order Details
 
-## Code of Conduct
+![Order Details](resources/screenshots/order_details.png)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Admin Dashboard
 
-## Security Vulnerabilities
+![Admin Dashboard](resources/screenshots/admin_dashboard.png)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+> Place your screenshots in `resources/screenshots/` with the above filenames for them to appear in the README.
+
+## Getting Started
+
+### Prerequisites
+
+-   PHP >= 8.1
+-   Composer
+-   Node.js & npm
+-   MySQL or compatible database
+
+### Installation
+
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/yourusername/hellomachan.git
+    cd hellomachan
+    ```
+2. Install PHP dependencies:
+    ```sh
+    composer install
+    ```
+3. Install JS dependencies:
+    ```sh
+    npm install
+    ```
+4. Copy `.env.example` to `.env` and configure your database and mail settings:
+    ```sh
+    cp .env.example .env
+    ```
+5. Generate application key:
+    ```sh
+    php artisan key:generate
+    ```
+6. Run migrations and seeders:
+    ```sh
+    php artisan migrate --seed
+    ```
+7. Build frontend assets:
+    ```sh
+    npm run build
+    ```
+8. Start the development server:
+    ```sh
+    php artisan serve
+    ```
+
+Visit [http://localhost:8000](http://localhost:8000) in your browser.
+
+## Folder Structure
+
+-   `app/Http/Controllers/` - Application controllers
+-   `app/Models/` - Eloquent models
+-   `resources/views/` - Blade templates
+-   `routes/web.php` - Web routes
+-   `database/migrations/` - Database schema
+-   `public/` - Public assets
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open source and available under the [MIT License](LICENSE).
