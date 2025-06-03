@@ -1,5 +1,5 @@
 <!-- Navbar & Hero Start -->
-<div class="container-fluid p-0">
+<div class="p-0 container-fluid">
     <nav class="px-4 py-3 navbar navbar-expand-lg navbar-dark bg-dark position-relative px-lg-5 py-lg-0" style="background-color: var(--dark) !important; z-index: 1000;">
         <a href="{{ route('home') }}" class="p-0 navbar-brand">
             <h1 class="m-0 text-primary">
@@ -16,11 +16,17 @@
                 <a href="{{ route('menu') }}" class="nav-item nav-link {{ request()->routeIs('menu') ? 'active' : '' }}">Menu</a>
                 <a href="{{ route('contact') }}" class="nav-item nav-link {{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a>
             </div> @guest
-            <div class="d-flex gap-2">
+            <div class="gap-2 d-flex">
                 <a href="{{ route('login') }}" class="px-3 py-2 btn btn-outline-light">Login</a>
                 <a href="{{ route('register') }}" class="px-3 py-2 btn btn-primary">Register</a>
             </div>
-            @else <div class="d-flex gap-2 align-items-center">
+            @else
+            <div class="gap-2 d-flex align-items-center">
+                @if(auth()->user()->isAdmin())
+                <a href="{{ route('admin.dashboard') }}" class="px-3 py-2 btn btn-outline-light">
+                    <i class="bi bi-speedometer2 me-1"></i>Dashboard
+                </a>
+                @endif
                 <a href="{{ route('orders.index') }}" class="px-3 py-2 btn btn-outline-light">
                     <i class="bi bi-clock-history me-1"></i>Orders
                 </a>
@@ -31,7 +37,7 @@
                     $cartCount = App\Models\CartItem::where('user_id', auth()->id())->sum('quantity');
                     @endphp
                     @if($cartCount > 0)
-                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    <span class="top-0 position-absolute start-100 translate-middle badge rounded-pill bg-danger">
                         {{ $cartCount }}
                     </span>
                     @endif
