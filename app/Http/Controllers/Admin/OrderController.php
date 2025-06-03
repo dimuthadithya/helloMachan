@@ -7,7 +7,8 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
-{    public function index()
+{
+    public function index()
     {
         $query = Order::with(['user', 'items.menuItem']);
 

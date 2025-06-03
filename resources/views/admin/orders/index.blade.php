@@ -47,7 +47,7 @@
         </div>
         <div class="col-12 col-md-4">
             <div class="p-4 bg-white rounded shadow-sm">
-                <div class="d-flex justify-content-between mb-3">
+                <div class="mb-3 d-flex justify-content-between">
                     <div>
                         <p class="mb-0 text-secondary">Total Orders</p>
                         <h3 class="mb-0">{{ $orders->count() }}</h3>
