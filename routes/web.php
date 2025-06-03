@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AdminMiddleware;
 
@@ -19,6 +20,13 @@ Route::get('/menu', [MenuController::class, 'index'])->name('menu');
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
+
+// Cart routes
+Route::middleware(['auth'])->group(function () {
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+    Route::delete('/cart/{id}', [CartController::class, 'remove'])->name('cart.remove');
+});
 
 // Include authentication routes
 require __DIR__ . '/auth.php';

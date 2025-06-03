@@ -25,7 +25,7 @@
 
         <!-- Category Navigation -->
         @if($categories->count() > 0)
-        <div class="text-center mb-5 tab-class wow fadeInUp" data-wow-delay="0.1s">
+        <div class="mb-5 text-center tab-class wow fadeInUp" data-wow-delay="0.1s">
             <ul class="mb-4 nav nav-pills d-inline-flex justify-content-center border-bottom">
                 <li class="nav-item">
                     <a class="pb-3 mx-3 d-flex align-items-center text-start active" data-bs-toggle="pill" href="#all">
@@ -54,17 +54,17 @@
         <div class="tab-content wow fadeInUp" data-wow-delay="0.1s">
             <!-- All Items Tab -->
             <div class="tab-pane fade show active" id="all">
-                <div class="row g-4">
-                    @forelse($items as $item)
+                <div class="row g-4"> @forelse($items as $item)
                     <div class="col-lg-6">
                         <x-menu-card
                             :image-path="Storage::url($item->image)"
                             :name="$item->name"
                             :price="number_format($item->price, 2)"
-                            :description="$item->description" />
+                            :description="$item->description"
+                            :item-id="$item->id" />
                     </div>
                     @empty
-                    <div class="col-12 text-center py-5">
+                    <div class="py-5 text-center col-12">
                         <i class="mb-3 bi bi-inbox display-4 text-secondary"></i>
                         <p class="mb-0 text-secondary">No menu items available</p>
                     </div>
@@ -78,17 +78,17 @@
                 <div class="row g-4">
                     @php
                     $categoryItems = $items->where('category_id', $category->id);
-                    @endphp
-                    @forelse($categoryItems as $item)
+                    @endphp @forelse($categoryItems as $item)
                     <div class="col-lg-6">
                         <x-menu-card
                             :image-path="Storage::url($item->image)"
                             :name="$item->name"
                             :price="number_format($item->price, 2)"
-                            :description="$item->description" />
+                            :description="$item->description"
+                            :item-id="$item->id" />
                     </div>
                     @empty
-                    <div class="col-12 text-center py-5">
+                    <div class="py-5 text-center col-12">
                         <i class="mb-3 bi bi-inbox display-4 text-secondary"></i>
                         <p class="mb-0 text-secondary">No items available in this category</p>
                     </div>

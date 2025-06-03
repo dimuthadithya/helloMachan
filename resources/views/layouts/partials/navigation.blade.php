@@ -22,6 +22,19 @@
             </div>
             @else
             <div class="d-flex gap-2 align-items-center">
+                <a href="{{ route('cart.index') }}" class="px-3 py-2 btn btn-outline-light position-relative">
+                    <i class="bi bi-cart3"></i>
+                    @if(auth()->check())
+                    @php
+                    $cartCount = App\Models\CartItem::where('user_id', auth()->id())->sum('quantity');
+                    @endphp
+                    @if($cartCount > 0)
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        {{ $cartCount }}
+                    </span>
+                    @endif
+                    @endif
+                </a>
                 <a href="#booking" class="px-4 py-2 btn btn-primary">Book A Table</a>
                 <form method="POST" action="{{ route('logout') }}" class="m-0">
                     @csrf
