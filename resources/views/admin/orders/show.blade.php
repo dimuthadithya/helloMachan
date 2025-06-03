@@ -64,12 +64,14 @@
                                 <td>
                                     <h6 class="mb-0">{{ $item->menuItem->name }}</h6>
                                     <small class="text-muted">{{ Str::limit($item->menuItem->description, 50) }}</small>
-                                </td>                                <td>Rs. {{ number_format($item->unit_price, 2) }}</td>
+                                </td>
+                                <td>Rs. {{ number_format($item->unit_price, 2) }}</td>
                                 <td>{{ $item->quantity }}</td>
                                 <td>Rs. {{ number_format($item->subtotal, 2) }}</td>
                             </tr>
                             @endforeach
-                        </tbody>                        <tfoot class="table-light">
+                        </tbody>
+                        <tfoot class="table-light">
                             <tr>
                                 <td colspan="4" class="text-end"><strong>Total:</strong></td>
                                 <td><strong>Rs. {{ number_format($order->total_amount, 2) }}</strong></td>
