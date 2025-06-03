@@ -89,7 +89,8 @@
         </div>
 
         <!-- Order Details -->
-        <div class="col-lg-4">            <div class="bg-white p-4 rounded shadow-sm mb-4">
+        <div class="col-lg-4">
+            <div class="bg-white p-4 rounded shadow-sm mb-4">
                 <h4 class="mb-4">Delivery Information</h4>
                 <div class="mb-3">
                     <div class="d-flex justify-content-between mb-1">
