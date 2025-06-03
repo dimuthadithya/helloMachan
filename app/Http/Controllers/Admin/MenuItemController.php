@@ -36,7 +36,8 @@ class MenuItemController extends Controller
 
     public function create()
     {
-        return view('admin.items.create');
+        $categories = \App\Models\Category::all();
+        return view('admin.items.create', compact('categories'));
     }
 
     public function store(Request $request)
