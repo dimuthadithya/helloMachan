@@ -89,28 +89,29 @@
         </div>
 
         <!-- Order Details -->
-        <div class="col-lg-4">
-            <div class="bg-white p-4 rounded shadow-sm mb-4">
+        <div class="col-lg-4">            <div class="bg-white p-4 rounded shadow-sm mb-4">
                 <h4 class="mb-4">Delivery Information</h4>
                 <div class="mb-3">
-                    <label class="text-muted small">Customer Name</label>
-                    <p class="mb-0">{{ $order->customer_name }}</p>
-                </div>
-                <div class="mb-3">
-                    <label class="text-muted small">Email Address</label>
-                    <p class="mb-0">{{ $order->customer_email }}</p>
-                </div>
-                <div class="mb-3">
-                    <label class="text-muted small">Phone Number</label>
-                    <p class="mb-0">{{ $order->customer_phone }}</p>
-                </div>
-                <div class="mb-3">
-                    <label class="text-muted small">Delivery Address</label>
-                    <p class="mb-0">{{ $order->delivery_address }}</p>
+                    <div class="d-flex justify-content-between mb-1">
+                        <span class="text-muted">Customer Name:</span>
+                        <span class="fw-medium">{{ $order->customer_name }}</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-1">
+                        <span class="text-muted">Email Address:</span>
+                        <span>{{ $order->customer_email }}</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-1">
+                        <span class="text-muted">Phone Number:</span>
+                        <span>{{ $order->customer_phone }}</span>
+                    </div>
+                    <div class="border-top pt-3 mt-3">
+                        <label class="text-muted d-block mb-2">Delivery Address:</label>
+                        <p class="mb-0">{{ $order->delivery_address }}</p>
+                    </div>
                 </div>
                 @if($order->notes)
-                <div class="mb-0">
-                    <label class="text-muted small">Special Notes</label>
+                <div class="border-top pt-3 mt-3">
+                    <label class="text-muted d-block mb-2">Special Notes:</label>
                     <p class="mb-0">{{ $order->notes }}</p>
                 </div>
                 @endif
