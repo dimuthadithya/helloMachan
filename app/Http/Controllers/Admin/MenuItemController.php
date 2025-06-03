@@ -12,7 +12,25 @@ class MenuItemController extends Controller
 {
     public function index()
     {
-        $items = MenuItem::with('category')->latest()->get();
+        // Get query parameters
+        $category = request('category');
+        $status = request('status');
+
+        // Start query builder
+        $query = MenuItem::with('category')->latest();
+
+        // Apply filters
+        if ($category) {
+            $query->where('category_id', $category);
+        }
+
+        if ($status !== null) {
+            $query->where('is_available', $status);
+        }
+
+        // Get paginated results
+        $items = $query->paginate(10);
+
         return view('admin.items.index', compact('items'));
     }
 
