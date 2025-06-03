@@ -171,12 +171,6 @@
                         </tbody>
                     </table>
                 </div>
-
-                @if(method_exists($orders, 'links'))
-                <div class="mt-4 d-flex justify-content-end">
-                    {{ $orders->links() }}
-                </div>
-                @endif
             </div>
         </div>
     </div>

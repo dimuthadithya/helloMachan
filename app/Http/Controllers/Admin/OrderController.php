@@ -7,10 +7,9 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
-{
-    public function index()
+{    public function index()
     {
-        $orders = Order::with(['user', 'items.menuItem'])->latest()->paginate(10);
+        $orders = Order::with(['user', 'items.menuItem'])->latest()->get();
         return view('admin.orders.index', compact('orders'));
     }
 
