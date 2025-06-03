@@ -40,10 +40,8 @@
                     <span class="top-0 position-absolute start-100 translate-middle badge rounded-pill bg-danger">
                         {{ $cartCount }}
                     </span>
-                    @endif
-                    @endif
+                    @endif                    @endif
                 </a>
-                <a href="#booking" class="px-4 py-2 btn btn-primary">Book A Table</a>
                 <form method="POST" action="{{ route('logout') }}" class="m-0">
                     @csrf
                     <button type="submit" class="px-3 py-2 btn btn-outline-light">
