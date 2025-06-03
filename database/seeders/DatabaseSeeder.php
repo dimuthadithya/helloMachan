@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             OrderSeeder::class,
             OrderItemSeeder::class,
             CartItemSeeder::class,
+            FeedbackSeeder::class, // Add feedback after orders
         ]);
     }
 }

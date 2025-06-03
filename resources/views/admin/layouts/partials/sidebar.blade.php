@@ -101,6 +101,24 @@
                 </div>
             </div>
 
+            <!-- Feedback Management -->
+            <div class="mb-3 nav-section">
+                <h6 class="px-3 mb-2 text-muted text-uppercase small fw-semibold">Feedback Management</h6>
+                <div class="nav-item">
+                    <a href="{{ route('admin.feedback.index') }}"
+                        class="nav-link px-3 py-2 rounded-3 {{ request()->routeIs('admin.feedback.*') ? 'active bg-primary text-white' : 'text-secondary hover-primary' }}">
+                        <i class="bi bi-chat-dots me-2"></i>
+                        <span>Customer Feedback</span>
+                        @php
+                        $pendingFeedbackCount = \App\Models\Feedback::where('is_approved', false)->count();
+                        @endphp
+                        @if($pendingFeedbackCount > 0)
+                        <span class="ms-auto badge bg-warning text-dark">{{ $pendingFeedbackCount }}</span>
+                        @endif
+                    </a>
+                </div>
+            </div>
+
             <!-- User Management -->
             <div class="mb-3 nav-section">
                 <h6 class="px-3 mb-2 text-muted text-uppercase small fw-semibold">User Management</h6>

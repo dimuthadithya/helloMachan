@@ -125,7 +125,58 @@
                     <i class="bi bi-chat-dots me-2"></i>Contact Support
                 </a>
             </div>
+
+            @if($order->status === 'completed' && !$order->feedback)
+            <div class="p-4 bg-white rounded shadow-sm">
+                <h4 class="mb-4">Leave Feedback</h4>
+                <form action="{{ route('orders.feedback.store', $order) }}" method="POST">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="rating" class="form-label">Rating</label>
+                        <div class="d-flex gap-3">
+                            @for($i = 1; $i <= 5; $i++)
+                                <div class="form-check">
+                                <input class="form-check-input" type="radio" name="rating" id="rating{{ $i }}" value="{{ $i }}" {{ old('rating') == $i ? 'checked' : '' }}>
+                                <label class="form-check-label" for="rating{{ $i }}">
+                                    {{ $i }}
+                                </label>
+                        </div>
+                        @endfor
+                    </div>
+                    @if($errors->has('rating'))
+                    <div class="text-danger small">{{ $errors->first('rating') }}</div>
+                    @endif
+            </div>
+            <div class="mb-3">
+                <label for="comment" class="form-label">Your Feedback</label>
+                <textarea class="form-control @if($errors->has('comment')) is-invalid @endif" id="comment" name="comment" rows="3" placeholder="Tell us about your experience">{{ old('comment') }}</textarea>
+                @if($errors->has('comment'))
+                <div class="invalid-feedback">{{ $errors->first('comment') }}</div>
+                @endif
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Feedback</button>
+            </form>
         </div>
+        @endif
+
+        @if($order->feedback)
+        <div class="p-4 bg-white rounded shadow-sm">
+            <h4 class="mb-4">Your Feedback</h4>
+            <div class="mb-3">
+                <label class="text-muted d-block">Rating</label>
+                <div class="text-warning">
+                    @for($i = 1; $i <= 5; $i++)
+                        <i class="bi bi-star{{ $i <= $order->feedback->rating ? '-fill' : '' }}"></i>
+                        @endfor
+                </div>
+            </div>
+            <div class="mb-0">
+                <label class="text-muted d-block">Comment</label>
+                <p class="mb-0">{{ $order->feedback->comment }}</p>
+            </div>
+        </div>
+        @endif
     </div>
+</div>
 </div>
 @endsection

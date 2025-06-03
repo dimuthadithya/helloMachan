@@ -5,6 +5,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\FeedbackController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AdminMiddleware;
 
@@ -38,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
     // Order routes
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
     Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
+    Route::post('/orders/{order}/feedback', [FeedbackController::class, 'store'])->name('orders.feedback.store');
 });
 
 // Address routes
@@ -82,5 +84,11 @@ Route::middleware('auth')->group(function () {
 
         // Users Management
         Route::resource('users', App\Http\Controllers\Admin\UserController::class);
+
+        // Feedback Management
+        Route::get('/feedback', [App\Http\Controllers\Admin\FeedbackController::class, 'index'])->name('feedback.index');
+        Route::post('/feedback/{feedback}/approve', [App\Http\Controllers\Admin\FeedbackController::class, 'approve'])->name('feedback.approve');
+        Route::post('/feedback/{feedback}/reject', [App\Http\Controllers\Admin\FeedbackController::class, 'reject'])->name('feedback.reject');
+        Route::post('/feedback/{feedback}/toggle-featured', [App\Http\Controllers\Admin\FeedbackController::class, 'toggleFeatured'])->name('feedback.toggle-featured');
     });
 });

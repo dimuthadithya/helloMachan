@@ -70,8 +70,8 @@ class OrderSeeder extends Seeder
             // Random date within last 30 days
             $date = Carbon::now()->subDays(rand(0, 30))->subHours(rand(0, 24));
 
-            // Random status
-            $status = collect(['pending', 'processing', 'completed', 'cancelled'])->random();
+            // Random status with bias towards completed
+            $status = collect(['pending', 'processing', 'completed', 'completed', 'completed', 'cancelled'])->random();
 
             // Create order
             $order = Order::create([
