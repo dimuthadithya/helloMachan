@@ -82,7 +82,7 @@
                     </table>
                 </div>
 
-                <div class="text-end mt-4">                    <a href="{{ route('menu') }}" class="btn btn-secondary">
+                <div class="text-end mt-4"> <a href="{{ route('menu') }}" class="btn btn-secondary">
                         <i class="bi bi-arrow-left me-2"></i>Continue Shopping
                     </a>
                     <a href="{{ route('checkout.index') }}" class="ms-2 btn btn-primary">

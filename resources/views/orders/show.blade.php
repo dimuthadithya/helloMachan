@@ -61,9 +61,9 @@
                             <tr>
                                 <td>
                                     <div class="d-flex align-items-center">
-                                        <img src="{{ Storage::url($item->menuItem->image) }}" 
-                                            alt="{{ $item->menuItem->name }}" 
-                                            class="rounded" 
+                                        <img src="{{ Storage::url($item->menuItem->image) }}"
+                                            alt="{{ $item->menuItem->name }}"
+                                            class="rounded"
                                             style="width: 50px; height: 50px; object-fit: cover">
                                         <div class="ms-3">
                                             <h6 class="mb-0">{{ $item->menuItem->name }}</h6>
