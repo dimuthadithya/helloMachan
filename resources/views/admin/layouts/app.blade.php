@@ -164,7 +164,7 @@
 </head>
 
 <body>
-    <div class="p-0 position-relative d-flex">
+    <div class="p-0 position-relative d-flex justify-content-center align-items-start">
         @include('admin.layouts.partials.sidebar')
 
         <!-- Content Start -->
