@@ -24,40 +24,44 @@
             top: 0;
             left: 0;
             bottom: 0;
-            width: 250px;
+            width: 280px;
             z-index: 999;
+            transition: all 0.3s ease;
         }
 
         .content {
-            margin-left: 250px;
+            margin-left: 280px;
             min-height: 100vh;
             background: var(--light);
-            transition: 0.5s;
+            transition: all 0.3s ease;
         }
 
-        .sidebar .navbar .navbar-nav .nav-link {
-            padding: 7px 20px;
-            color: var(--light);
-            font-weight: 500;
-            border-left: 3px solid var(--dark);
-            border-radius: 0;
-            outline: none;
+        .hover-primary:hover {
+            color: var(--primary) !important;
+            background: rgba(254, 161, 22, 0.1);
         }
 
-        .sidebar .navbar .navbar-nav .nav-link:hover,
-        .sidebar .navbar .navbar-nav .nav-link.active {
-            color: var(--primary);
-            background: var(--dark);
-            border-color: var(--primary);
+        .hover-danger:hover {
+            color: #dc3545 !important;
+            background: rgba(220, 53, 69, 0.1);
         }
 
+        /* Fixes for mobile responsiveness */
         @media (max-width: 992px) {
             .sidebar {
-                margin-left: -250px;
+                margin-left: -280px;
+            }
+
+            .sidebar.active {
+                margin-left: 0;
             }
 
             .content {
                 margin-left: 0;
+            }
+
+            .content.active {
+                margin-left: 280px;
             }
         }
     </style>
