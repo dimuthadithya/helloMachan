@@ -60,11 +60,10 @@ class MenuItemController extends Controller
         MenuItem::create($data);
 
         return redirect()->route('admin.items.index')->with('success', 'Menu item created successfully');
-    }
-
-    public function edit(MenuItem $item)
+    }    public function edit(MenuItem $item)
     {
-        return view('admin.items.edit', compact('item'));
+        $categories = \App\Models\Category::all();
+        return view('admin.items.edit', compact('item', 'categories'));
     }
 
     public function update(Request $request, MenuItem $item)

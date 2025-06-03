@@ -7,10 +7,16 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
-{
-    public function index()
+{    public function index()
     {
-        $orders = Order::with(['user', 'items.menuItem'])->latest()->get();
+        $query = Order::with(['user', 'items.menuItem']);
+
+        // Filter by status if provided in the URL
+        if (request('status')) {
+            $query->where('status', request('status'));
+        }
+
+        $orders = $query->latest()->get();
         return view('admin.orders.index', compact('orders'));
     }
 
