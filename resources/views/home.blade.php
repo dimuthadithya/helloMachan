@@ -110,13 +110,12 @@
             <div class="row g-4">
                 @foreach(\App\Models\MenuItem::where('is_available', true)->inRandomOrder()->take(6)->get() as $item)
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="{{ 0.1 + $loop->index * 0.1 }}s">
-                    <x-menu-card 
+                    <x-menu-card
                         :imagePath="$item->image ? 'storage/'.$item->image : 'img/default-food.jpg'"
                         :name="$item->name"
                         :price="number_format($item->price, 2)"
                         :description="$item->description"
-                        :itemId="$item->id"
-                    />
+                        :itemId="$item->id" />
                 </div>
                 @endforeach
             </div>
