@@ -12,9 +12,9 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
-Route::get('/menu', function () {
-    return view('menu');
-})->name('menu');
+use App\Http\Controllers\MenuController;
+
+Route::get('/menu', [MenuController::class, 'index'])->name('menu');
 
 Route::get('/contact', function () {
     return view('contact');
