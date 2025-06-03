@@ -58,33 +58,33 @@
                                 <td>
                                     <div style="max-width: 300px;">
                                         @foreach($order->items as $item)
-                                            <span class="badge bg-light text-dark mb-1">
-                                                {{ $item->quantity }}x {{ $item->menuItem->name }}
-                                            </span>
+                                        <span class="badge bg-light text-dark mb-1">
+                                            {{ $item->quantity }}x {{ $item->menuItem->name }}
+                                        </span>
                                         @endforeach
                                     </div>
                                 </td>
                                 <td>${{ number_format($order->total_amount, 2) }}</td>
                                 <td>
                                     @switch($order->status)
-                                        @case('pending')
-                                            <span class="badge bg-warning text-dark">Pending</span>
-                                            @break
-                                        @case('processing')
-                                            <span class="badge bg-info">Processing</span>
-                                            @break
-                                        @case('completed')
-                                            <span class="badge bg-success">Completed</span>
-                                            @break
-                                        @case('cancelled')
-                                            <span class="badge bg-danger">Cancelled</span>
-                                            @break
-                                        @default
-                                            <span class="badge bg-secondary">{{ ucfirst($order->status) }}</span>
+                                    @case('pending')
+                                    <span class="badge bg-warning text-dark">Pending</span>
+                                    @break
+                                    @case('processing')
+                                    <span class="badge bg-info">Processing</span>
+                                    @break
+                                    @case('completed')
+                                    <span class="badge bg-success">Completed</span>
+                                    @break
+                                    @case('cancelled')
+                                    <span class="badge bg-danger">Cancelled</span>
+                                    @break
+                                    @default
+                                    <span class="badge bg-secondary">{{ ucfirst($order->status) }}</span>
                                     @endswitch
                                 </td>
                                 <td class="text-end">
-                                    <a href="{{ route('orders.show', $order) }}" 
+                                    <a href="{{ route('orders.show', $order) }}"
                                         class="btn btn-sm btn-outline-primary">
                                         <i class="bi bi-eye me-1"></i>View Details
                                     </a>

@@ -20,7 +20,7 @@
                 <a href="{{ route('login') }}" class="px-3 py-2 btn btn-outline-light">Login</a>
                 <a href="{{ route('register') }}" class="px-3 py-2 btn btn-primary">Register</a>
             </div>
-            @else            <div class="d-flex gap-2 align-items-center">
+            @else <div class="d-flex gap-2 align-items-center">
                 <a href="{{ route('orders.index') }}" class="px-3 py-2 btn btn-outline-light">
                     <i class="bi bi-clock-history me-1"></i>Orders
                 </a>
