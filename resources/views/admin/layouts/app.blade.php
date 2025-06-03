@@ -42,6 +42,15 @@
             width: 280px;
             z-index: 999;
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .sidebar nav {
+            overflow-y: auto;
+            flex: 1;
+            padding-bottom: 1rem;
         }
 
         .content {

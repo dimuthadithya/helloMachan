@@ -28,10 +28,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Navigation Menu -->
-        <div class="gap-1 px-4 navbar-nav w-100 d-flex flex-column">
+        </div> <!-- Navigation Menu -->
+        <div class="gap-1 px-4 navbar-nav w-100 d-flex flex-column flex-grow-1 overflow-auto">
             <!-- Main Navigation -->
             <div class="mb-3 nav-section">
                 <div class="nav-item">
