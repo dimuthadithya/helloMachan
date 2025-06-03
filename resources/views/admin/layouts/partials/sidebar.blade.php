@@ -1,9 +1,9 @@
 <!-- Sidebar Start -->
 <div class="sidebar">
-    <nav class="navbar h-100 bg-white">
+    <nav class="bg-white navbar h-100">
         <!-- Brand -->
-        <a href="{{ route('admin.dashboard') }}" class="text-decoration-none py-4 px-4 mb-4">
-            <h3 class="text-primary mb-0 d-flex align-items-center">
+        <a href="{{ route('admin.dashboard') }}" class="px-4 py-4 mb-4 text-decoration-none">
+            <h3 class="mb-0 text-primary d-flex align-items-center">
                 <i class="bi bi-building me-2"></i>
                 <span>Hello Machan</span>
             </h3>
@@ -12,12 +12,12 @@
         <!-- Admin Profile -->
         <div class="px-4 mb-4">
             <div class="p-3 rounded-3 bg-light">
-                <div class="d-flex align-items-center gap-3">
+                <div class="gap-3 d-flex align-items-center">
                     <div class="position-relative">
-                        <div class="rounded-circle bg-primary bg-opacity-10 p-2 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;">
-                            <i class="bi bi-person text-primary h5 mb-0"></i>
+                        <div class="p-2 rounded-circle bg-primary bg-opacity-10 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;">
+                            <i class="mb-0 bi bi-person text-primary h5"></i>
                         </div>
-                        <div class="position-absolute bottom-0 end-0 p-1 bg-success rounded-circle border border-2 border-white"></div>
+                        <div class="bottom-0 p-1 border border-white position-absolute end-0 bg-success rounded-circle"></div>
                     </div>
                     <div>
                         <h6 class="mb-1 text-dark">{{ auth()->user()->name }}</h6>
@@ -31,9 +31,9 @@
         </div>
 
         <!-- Navigation Menu -->
-        <div class="navbar-nav w-100 d-flex flex-column gap-1 px-4">
+        <div class="gap-1 px-4 navbar-nav w-100 d-flex flex-column">
             <!-- Main Navigation -->
-            <div class="nav-section mb-3">
+            <div class="mb-3 nav-section">
                 <div class="nav-item">
                     <a href="{{ route('admin.dashboard') }}"
                         class="nav-link px-3 py-2 rounded-3 {{ request()->routeIs('admin.dashboard') ? 'active bg-primary text-white' : 'text-secondary hover-primary' }}">
@@ -44,8 +44,8 @@
             </div>
 
             <!-- Menu Management -->
-            <div class="nav-section mb-3">
-                <h6 class="text-muted text-uppercase px-3 mb-2 small fw-semibold">Menu Management</h6>
+            <div class="mb-3 nav-section">
+                <h6 class="px-3 mb-2 text-muted text-uppercase small fw-semibold">Menu Management</h6>
                 <div class="nav-item">
                     <a href="{{ route('admin.items.index') }}"
                         class="nav-link px-3 py-2 rounded-3 {{ request()->routeIs('admin.items.*') ? 'active bg-primary text-white' : 'text-secondary hover-primary' }}">
@@ -63,8 +63,8 @@
             </div>
 
             <!-- Order Management -->
-            <div class="nav-section mb-3">
-                <h6 class="text-muted text-uppercase px-3 mb-2 small fw-semibold">Order Management</h6>
+            <div class="mb-3 nav-section">
+                <h6 class="px-3 mb-2 text-muted text-uppercase small fw-semibold">Order Management</h6>
                 <div class="nav-item">
                     <a href="{{ route('admin.orders.index') }}"
                         class="nav-link px-3 py-2 rounded-3 {{ request()->routeIs('admin.orders.index') && !request('status') ? 'active bg-primary text-white' : 'text-secondary hover-primary' }}">
@@ -102,8 +102,8 @@
             </div>
 
             <!-- User Management -->
-            <div class="nav-section mb-3">
-                <h6 class="text-muted text-uppercase px-3 mb-2 small fw-semibold">User Management</h6>
+            <div class="mb-3 nav-section">
+                <h6 class="px-3 mb-2 text-muted text-uppercase small fw-semibold">User Management</h6>
                 <div class="nav-item">
                     <a href="{{ route('admin.users.index') }}"
                         class="nav-link px-3 py-2 rounded-3 {{ request()->routeIs('admin.users.index') ? 'active bg-primary text-white' : 'text-secondary hover-primary' }}">
@@ -121,8 +121,8 @@
             </div>
 
             <!-- Settings & Profile -->
-            <div class="nav-section mb-3">
-                <h6 class="text-muted text-uppercase px-3 mb-2 small fw-semibold">Settings</h6>
+            <div class="mb-3 nav-section">
+                <h6 class="px-3 mb-2 text-muted text-uppercase small fw-semibold">Settings</h6>
                 <div class="nav-item">
                     <a href="{{ route('admin.profile.edit') }}"
                         class="nav-link px-3 py-2 rounded-3 {{ request()->routeIs('admin.profile.*') ? 'active bg-primary text-white' : 'text-secondary hover-primary' }}">
@@ -133,10 +133,10 @@
             </div>
 
             <!-- Logout Section -->
-            <div class="nav-section mt-auto mb-4">
+            <div class="mt-auto mb-4 nav-section">
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit" class="nav-link w-100 px-3 py-2 rounded-3 text-secondary border hover-danger d-flex align-items-center">
+                    <button type="submit" class="px-3 py-2 border nav-link w-100 rounded-3 text-secondary hover-danger d-flex align-items-center">
                         <i class="bi bi-box-arrow-right me-2"></i>
                         <span>Sign Out</span>
                     </button>
